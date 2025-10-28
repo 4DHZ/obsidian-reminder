@@ -34,6 +34,8 @@ export class ReminderModal {
       const n = new Notification({
         title: "Obsidian Reminder",
         body: reminder.title,
+        silent: true, //set to true to disable default notifications
+        sound: path.join(__dirname, 'fart6.mp3');
       });
       n.on("click", () => {
         n.close();
