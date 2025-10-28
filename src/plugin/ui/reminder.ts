@@ -4,7 +4,7 @@ import { App, Modal } from "obsidian";
 import ReminderView from "ui/Reminder.svelte";
 import type { Reminder } from "../../model/reminder";
 import type { Later } from "../../model/time";
-import { notificationUrl } from 'ui/audio_urls' ;
+import { notificationUrl } from './audio_urls' ;
 const electron = window.require ? window.require("electron") : undefined;
 
 export class ReminderModal {
@@ -36,8 +36,11 @@ export class ReminderModal {
         title: "Obsidian Reminder",
         body: reminder.title,
         silent: true, //set to true to disable default notifications
-        sound: path.join(__dirname, 'fart6.mp3');
       });
+      n.onshow = () => {
+	      const audio = new Audio(notificationUrl);
+	      audio.play();
+      };
       n.on("click", () => {
         n.close();
         this.showBuiltinReminder(
