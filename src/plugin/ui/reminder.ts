@@ -4,6 +4,7 @@ import { App, Modal } from "obsidian";
 import ReminderView from "ui/Reminder.svelte";
 import type { Reminder } from "../../model/reminder";
 import type { Later } from "../../model/time";
+import { notificationUrl } from 'ui/audio_urls' ;
 const electron = window.require ? window.require("electron") : undefined;
 
 export class ReminderModal {
